@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>BuiltonTech About Us</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../static/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/assets/css/templatemo-woox-travel.css">
+    <link rel="stylesheet" href="../static/assets/css/owl.css">
+    <link rel="stylesheet" href="../static/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <style>
+        .show-more {
+            opacity: 1 !important;
+        }
+
+        .modal-body img {
+            opacity: 1 !important;
+            background: none !important;
+        }
+
+        .modal-backdrop {
+            background-color: transparent !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="../static/assets/images/logo.png" alt="">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="{{ url_for('home') }}" >Home</a></li>
+                            <li><a href="{{ url_for('about') }}" class="active">About</a></li>
+                            <li><a href="{{ url_for('deals') }}">Services</a></li>
+                            <li><a href="{{ url_for('reservation') }}">Book Site-visit</a></li>
+                            <li><a href="{{ url_for('progress') }}">Progress</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <div class="user-info">
+                            <span>Curious?, {{ username }}</span>
+                            <button id="logoutButton" onclick="location.href='/logout'">Logout</button>
+                        </div>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="about-main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="content">
+                        <div class="blur-bg"></div>
+                        <h4>EXPLORE OUR COMPANY</h4>
+                        <div class="line-dec"></div>
+                        <h2>Welcome To BuiltonTech</h2>
+                        <p>Where knowledge meets quality, BuiltOnTech is a reconstruction company specializing in renovation, retrofitting, and defect rectification and many more, committed to delivering high-quality, innovative, and sustainable solutions tailored to client needs.</p>
+                        <!--<div class="main-button">
+                            <a href="reservation.html">Discover More</a>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <div class="cities-town">
+        <div class="container">
+            <div class="row">
+                <div class="slider-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2>BuiltonTech's<em> Services &amp; Products</em></h2>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="owl-cites-town owl-carousel">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="{{ url_for('deals') }}">
+                                            <img src="../static/assets/images/city-05.jpg" alt="">
+                                            <h4>Water Proofing</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="{{ url_for('deals') }}">
+                                            <img src="../static/assets/images/cities-02.jpg" alt="">
+                                            <h4>Rebar Corrosion</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="{{ url_for('deals') }}">
+                                            <img src="../static/assets/images/cities-03.jpg" alt="">
+                                            <h4>Expoxy/PU injection</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="{{ url_for('deals') }}">
+                                            <img src="../static/assets/images/cities-04.jpg" alt="">
+                                            <h4>Roof Slab Spailing </h4>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="{{ url_for('deals') }}">
+                                            <img src="../static/assets/images/cities-01.jpg" alt="">
+                                            <h4>Retrofitting</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="{{ url_for('deals') }}">
+                                            <img src="../static/assets/images/cities-02.jpg" alt="">
+                                            <h4>Crack repair</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="{{ url_for('deals') }}">
+                                            <img src="../static/assets/images/cities-03.jpg" alt="">
+                                            <h4>Exposy/PU injection</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <a href="{{ url_for('deals') }}">
+                                            <img src="../static/assets/images/cities-04.jpg" alt="">
+                                            <h4>Rebar Corrosion</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="weekly-offers">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading text-center">
+                        <h2>Our Company' s Portfolio</h2>
+                        <p>Explore our portfolio to see our completed projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="owl-weekly-offers owl-carousel">
+                        {% for item in portfolio_items %}
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="{{ url_for('static', filename=item[5]) }}" alt="" class="show-more" data-title="{{ item[0] }}" data-image="{{ url_for('static', filename=item[5]) }}">
+                                <div class="text">
+                                    <h4>{{ item[0] }}<br><span><i class="fas fa-money-bill"></i> Rs {{ item[1] }}</span></h4>
+                                    <h6><br><span></span></h6>
+                                    <div class="line-dec"></div>
+                                    <ul>
+                                        <li>Deal Includes:</li>
+                                        <li><i class="fas fa-people-carry"></i> {{ item[2] }} people</li>
+                                        <li><i class="fas fa-location"></i> {{ item[3] }}</li>
+                                        <li><i class="fas fa-clock"></i> {{ item[4] }} Days</li>
+                                    </ul>
+                                    <div class="main-button">
+                                        <a href="#" class="show-more" data-title="{{ item[0] }}" data-image="{{ url_for('static', filename=item[5]) }}">Show more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-labelledby="portfolioModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModalLabel">Portfolio Item</h5>
+                </div>
+                <div class="modal-body">
+                    <img id="portfolioImage" src="" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="more-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="left-image">
+                        <img src="../static/assets/images/about-left-image.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Brands we Trust</h2>
+                        <p></p>
+                         <img src="../static/assets/images/brand.png" alt="">
+                    </div>
+                    
+                    <p>At BuiltOnTech, we collaborate with trusted brands known for their quality and reliability to ensure the highest standards in our reconstruction services. From renovation and retrofitting to defect rectification and structural repairs, we provide comprehensive solutions tailored to meet our clients' needs with precision and excellence.</p>
+                    <div class="main-button">
+                        <a href="reservation.html">Book now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="call-to-action">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2>Book any services</h2>
+                    <h4>Book a free Site-Visit By Clicking The Button</h4>
+                </div>
+                <div class="col-lg-4">
+                    <div class="border-button">
+                        <a href="reservation.html">Book Yours Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright © 2021 <a href="#">BuiltonTech</a> Company. All rights reserved.
+                        <br>   
+                        Unauthorized reproduction, distribution, or modification of any content on this website is strictly prohibited. BuiltOnTech and its logo are trademarks of the company.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../static/assets/js/isotope.min.js"></script>
+    <script src="../static/assets/js/owl-carousel.js"></script>
+    <script src="../static/assets/js/wow.js"></script>
+    <script src="../static/assets/js/tabs.js"></script>
+    <script src="../static/assets/js/popup.js"></script>
+    <script src="../static/assets/js/custom.js"></script>
+
+    <script>
+        $(".option").click(function() {
+            $(".option").removeClass("active");
+            $(this).addClass("active");
+        });
+
+        // Show more button click event
+        $(document).on('click', '.show-more', function(e) {
+            e.preventDefault();
+            var title = $(this).data('title');
+            var image = $(this).data('image');
+            $('#portfolioModalLabel').text(title);
+            $('#portfolioImage').attr('src', image);
+            $('#portfolioModal').modal('show');
+        });
+
+        // Close modal when clicking outside of it
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('.modal-content').length && !$(event.target).is('.show-more')) {
+                $('#portfolioModal').modal('hide');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

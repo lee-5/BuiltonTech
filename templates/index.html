@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="../static/css/normalize.min.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+  <script src="../static/js/prefixfree.min.js"></script>
+  <link rel="icon" href="../static/favicon.ico/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  
+    <div class="quote-container" id="quote">
+        <p class="quote-text">
+            <span>W</span><span>H</span><span>E</span><span>R</span><span>E</span>&nbsp;
+            <span>E</span><span>X</span><span>P</span><span>E</span><span>R</span><span>I</span><span>E</span><span>N</span><span>C</span><span>E</span>&nbsp;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>M</span><span>E</span><span>E</span><span>T</span><span>S</span>&nbsp;
+            <span>Q</span><span>U</span><span>A</span><span>L</span><span>I</span><span>T</span><span>Y</span>
+        </p>
+    </div>
+
+  <div class="container">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <div class="center">
+      <h2>Login to Your Account</h2>
+      <form id="loginForm" action="/login" method="post">
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <button id="loginButton" type="submit">Login</button>
+      </form>
+      <!-- Add a Register Button Below -->
+      <button id="registerButton" onclick="location.href='/register'">Register</button>
+      {% if error %}
+      <p style="color: red;">{{ error }}</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const element = document.querySelector('.your-element-class');
+    if (element) {
+        element.classList.add('your-class');
+    }
+  });
+
+  document.addEventListener("mouseenter", function () {
+    document.body.style.backgroundImage = "url('../static/images/left.jpg')"; // New background image when inside
+    document.body.classList.add('background-left');
+  });
+
+  document.addEventListener("mouseleave", function () {
+    document.body.classList.remove('background-left');
+    setTimeout(function() {
+      document.body.style.backgroundImage = "url('../static/images/initial.jpg')"; // Revert to default when mouse leaves
+    }, 1000); // Match the duration of the transition
+  });
+
+  document.addEventListener("mousemove", function() {
+    const quoteElement = document.getElementById("quote");
+    if (quoteElement) {
+        quoteElement.style.display = "none";
+    }
+  });
+
+  document.addEventListener("mouseleave", function() {
+    const quoteElement = document.getElementById("quote");
+    if (quoteElement) {
+        quoteElement.style.display = "block";
+    }
+  });
+</script>

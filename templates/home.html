@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>BuiltonTech Home page</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../static/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/assets/css/templatemo-woox-travel.css">
+    <link rel="stylesheet" href="../static/assets/css/owl.css">
+    <link rel="stylesheet" href="../static/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../static/assets/css/custom.css">
+</head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="{{ url_for('home') }}" class="logo">
+                        <img src="../static/assets/images/logo.png" alt="">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                      <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+                      <li><a href="{{ url_for('about') }}">About</a></li>
+                      <li><a href="{{ url_for('deals') }}">Services</a></li>
+                      <li><a href="{{ url_for('reservation') }}">Book Site-visit</a></li>
+                      <li><a href="{{ url_for('progress') }}">Progress</a></li>
+                  </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <div class="user-info">
+                      <span>Welcome, {{ username }}</span>
+                      <button id="logoutButton" onclick="location.href='/logout'">Logout</button>
+                  </div>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+  </header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Main Banner Area Start ***** -->
+  <section id="section-1">
+    <div class="content-slider">
+      <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
+      <input type="radio" id="banner2" class="sec-1-input" name="banner">
+      <input type="radio" id="banner3" class="sec-1-input" name="banner">
+      <input type="radio" id="banner4" class="sec-1-input" name="banner">
+	  <input type="radio" id="banner5" class="sec-1-input" name="banner">
+      <input type="radio" id="banner6" class="sec-1-input" name="banner">
+      <input type="radio" id="banner7" class="sec-1-input" name="banner">
+		
+      <div class="slider">
+		  
+		  
+        <div id="top-banner-1" class="banner">
+          <div class="banner-inner-wrapper header-text">
+            <div class="main-caption">
+              <h2>Take a Glimpse of the Services we provide</h2>
+              <h1>Chemical Anchoring</h1>
+              <div class="border-button"><a href="{{ url_for('deals') }}">Book now</a></div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="more-info">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-user"></i>
+                        <h4><span>No of Workers</span><br>3 Person</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-globe"></i>
+                        <h4><span>Time Period</span><br>2 days</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-home"></i>
+                        <h4><span>AVG Price:</span><br>₹946.000</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="main-button">
+                          <a href="{{ url_for('deals') }}">Explore More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="top-banner-2" class="banner">
+          <div class="banner-inner-wrapper header-text">
+            <div class="main-caption">
+              <h2>Take a Glimpse of the Services we provide:</h2>
+              <h1>Retrofiting</h1>
+              <div class="border-button"><a href="{{ url_for('deals') }}">Book now</a></div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="more-info">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-user"></i>
+                        <h4><span>No of workers</span><br>2 Person</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-globe"></i>
+                        <h4><span>Time Period</span><br>4 days</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-home"></i>
+                        <h4><span>AVG Price:</span><br>₹1100.200</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="main-button">
+                          <a href="{{ url_for('deals') }}">Explore More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="top-banner-3" class="banner">
+          <div class="banner-inner-wrapper header-text">
+            <div class="main-caption">
+              <h2>Take a Glimpse of the Services we provide:</h2>
+              <h1>Defect Rectification</h1>
+              <div class="border-button"><a href="{{ url_for('deals') }}">Book now</a></div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="more-info">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-user"></i>
+                        <h4><span>No of Workers</span><br>7 person</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-globe"></i>
+                        <h4><span>Time period</span><br>5-10 days</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-home"></i>
+                        <h4><span>AVG Cost:</span><br>₹8000.600</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="main-button">
+                          <a href="{{ url_for('deals') }}">Explore More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="top-banner-4" class="banner">
+          <div class="banner-inner-wrapper header-text">
+            <div class="main-caption">
+              <h2>Take a Glimpse of the Services we provide:</h2>
+              <h1>Renovation</h1>
+              <div class="border-button"><a href="{{ url_for('deals') }}">Book Now</a></div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="more-info">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-user"></i>
+                        <h4><span>No of Workers</span><br>9 person</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-globe"></i>
+                        <h4><span>Time Period</span><br>51 days</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-home"></i>
+                        <h4><span>AVG Price:</span><br>₹16500.450</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="main-button">
+                          <a href="{{ url_for('deals') }}">Explore More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+		
+		
+		<div id="top-banner-5" class="banner">
+          <div class="banner-inner-wrapper header-text">
+            <div class="main-caption">
+              <h2>Take a Glimpse of the Services we provide</h2>
+              <h1>Crack Repair</h1>
+              <div class="border-button"><a href="{{ url_for('deals') }}">Book now</a></div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="more-info">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-user"></i>
+                        <h4><span>No of Workers</span><br>3 Person</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-globe"></i>
+                        <h4><span>Time Period</span><br>2 days</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-home"></i>
+                        <h4><span>AVG Price:</span><br>₹946.000</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="main-button">
+                          <a href="{{ url_for('deals') }}">Explore More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+		<div id="top-banner-6" class="banner">
+          <div class="banner-inner-wrapper header-text">
+            <div class="main-caption">
+              <h2>Take a Glimpse of the Services we provide</h2>
+              <h1>Rebar corrosion</h1>
+              <div class="border-button"><a href="{{ url_for('deals') }}">Book now</a></div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="more-info">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-user"></i>
+                        <h4><span>No of Workers</span><br>5 Person</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-globe"></i>
+                        <h4><span>Time Period</span><br>9 days</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-home"></i>
+                        <h4><span>AVG Price:</span><br>₹9460.000</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="main-button">
+                          <a href="{{ url_for('deals') }}">Explore More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+		<div id="top-banner-7" class="banner">
+          <div class="banner-inner-wrapper header-text">
+            <div class="main-caption">
+              <h2>Take a Glimpse of the Services we provide</h2>
+              <h1>Exposy/PU injection</h1>
+              <div class="border-button"><a href="{{ url_for('deals') }}">show details</a></div>
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="more-info">
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-user"></i>
+                        <h4><span>No of Workers</span><br>7 Person</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-globe"></i>
+                        <h4><span>Time Period</span><br>16 days</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <i class="fa fa-home"></i>
+                        <h4><span>AVG Price:</span><br>₹7990.000</h4>
+                      </div>
+                      <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="main-button">
+                          <a href="{{ url_for('deals') }}">Explore More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+			</div> 
+		<nav>
+        <div class="controls">
+          <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">1</span></label>
+          <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">2</span></label>
+          <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">3</span></label>
+          <label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">4</span></label>
+		      <label for="banner5"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">5</span></label>
+          <label for="banner6"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">6</span></label>
+          <label for="banner7"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">7</span></label>
+		  
+        </div>
+      </nav>
+    </div>
+  </section>
+  <!-- ***** Main Banner Area End ***** -->
+  
+  <div class="visit-country">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="section-heading">
+            <h2>Choose any service with unwavering confidence.</h2>
+            <p>Kindly review the options listed below and make your selection based on your preferences and requirements.</p>
+          </div>
+        </div>
+      </div>
+		
+<div class="row">
+    <div class="col-lg-12">
+        <div class="items">
+            <div class="row">
+                
+                    {% for service in services %}
+                    <div class="item">
+                        <div class="row align-items-center">
+                            <!-- Image Section -->
+                            <div class="col-lg-3 col-sm-4">
+                                <div class="image">
+                                    <a href="{{ url_for('deals') }}">
+                                        <img src="{{ url_for('static', filename=service[0]) }}" alt="{{ service[1] }}">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Content Section --> 
+                            <div class="col-lg-6 col-sm-5">
+                                <div class="right-content">
+                                    <h4>{{ service[1] }}</h4> <!-- Service Name -->
+                                    <span></span>
+                                    <div class="main-button">
+                                      <a href="{{ url_for('about') }}">Explore More</a>
+                                    </div>
+                                    <p>{{ service[2] }}</p> <!-- Service Description -->
+                                    <ul class="info">
+                                        <li><i class="fa fa-user"></i> {{ service[4] }} People</li>
+                                        <li><i class="fa fa-clock"></i> {{ service[3] }} Days</li>
+                                        <li><i class="fa fa-home"></i> ₹ {{ service[5] }} </li>
+                                    </ul>
+                                    <div class="text-button">
+                                      <a href="{{ url_for('about') }}">Book Now <i class="fa fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Video Section (Replaces Sidebar Map) -->
+                            <div class="col-lg-3 col-sm-3">
+                                <div class="video-container">
+                                    <video controls>
+                                        <source src="{{ url_for('static', filename=service[6]) }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            </div>
+                            <!-- End of Video -->
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+</div>
+          
+              <div class="col-lg-12">
+                <ul class="page-numbers">
+                  <li><a href="#"><i class="fa fa-arrow-left"></i></a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#"><i class="fa fa-arrow-right"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+      
+	
+	
+	
+	
+	
+		  
+	
+  <div class="call-to-action">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <h2>Book any services</h2>
+          <h4>Book Free Site-visits By Clicking The Button</h4>
+        </div>
+        <div class="col-lg-4">
+          <div class="border-button">
+            <a href="{{ url_for('reservation') }}">Book Yours Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright © 2036 <a href="#">BuiltonTech</a> Company. All rights reserved. 
+          <br>BuiltOnTech and its logo are trademarks of the company</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="../static/vendor/jquery/jquery.min.js"></script>
+  <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="../static/assets/js/isotope.min.js"></script>
+  <script src="../static/assets/js/owl-carousel.js"></script>
+  <script src="../static/assets/js/wow.js"></script>
+  <script src="../static/assets/js/tabs.js"></script>
+  <script src="../static/assets/js/popup.js"></script>
+  <script src="../static/assets/js/custom.js"></script>
+
+  <script>
+    function bannerSwitcher() {
+      next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
+      if (next.length) next.prop('checked', true);
+      else $('.sec-1-input').first().prop('checked', true);
+    }
+
+    var bannerTimer = setInterval(bannerSwitcher, 5000);
+
+    $('nav .controls label').click(function() {
+      clearInterval(bannerTimer);
+      bannerTimer = setInterval(bannerSwitcher, 5000)
+    });
+  </script>
+
+  
+  </body>
+
+</html>

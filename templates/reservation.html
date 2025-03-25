@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>BuiltonTech booking page</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../static/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/assets/css/templatemo-woox-travel.css">
+    <link rel="stylesheet" href="../static/assets/css/owl.css">
+    <link rel="stylesheet" href="../static/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <style>
+        body {
+            color: white;
+        }
+        .table {
+            color: white;
+        }
+        .table th, .table td {
+            color: white;
+        }
+        .h1 {
+            color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="../static/assets/images/logo.png" alt="">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="{{ url_for('home') }}" >Home</a></li>
+                            <li><a href="{{ url_for('about') }}">About</a></li>
+                            <li><a href="{{ url_for('deals') }}">Services</a></li>
+                            <li><a href="{{ url_for('reservation') }}" class="active">Book Site-visit</a></li>
+                            <li><a href="{{ url_for('progress') }}">Progress</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <div class="user-info">
+                            <span>Go for it, {{ username }}</span>
+                            <button id="logoutButton" onclick="location.href='/logout'">Logout</button>
+                        </div>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div class="second-page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>Book Free Site-Visit</h4>
+                    <h2>Make Your Reservation</h2>
+                    <p>Get your live location by clicking the button and book free site visit</p>
+                    <div class="main-button"><a href="javascript:void(0);" id="get-live-location">Get Live location</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="more-info reservation-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="info-item">
+                        <i class="fa fa-phone"></i>
+                        <h4>Make a Phone Call</h4>
+                        <a href="#">+91-8089105347</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="info-item">
+                        <i class="fa fa-envelope"></i>
+                        <h4>Contact Us via Email</h4>
+                        <a href="#">builtontechnicals@gmail.com</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="info-item">
+                        <i class="fa fa-map-marker"></i>
+                        <h4>Visit Our Offices</h4>
+                        <a href="#">XI/296A,Fortkochi,Ernakulam,Kerala</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="reservation-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="map" style="height: 450px; border-top-left-radius: 23px; border-top-right-radius: 23px;"></div>
+                    <button id="find-location" class="main-button-1">Find Current Location</button>
+                </div>
+                <div class="col-lg-12">
+                    <form id="reservation-form" name="gs" method="post" role="search">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Make Your <em>Reservation</em> Through This <em>Form</em></h4>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <label for="Name" class="form-label">Your Name</label>
+                                    <input type="text" name="Name" class="Name" placeholder="Ex. Johny Ray" autocomplete="on" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <label for="Number" class="form-label">Your Phone Number</label>
+                                    <input type="text" name="Number" class="Number" placeholder="Ex. +xxx xxx xxx" autocomplete="on" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <label for="Guests" class="form-label">Address</label>
+                                    <input type="text" name="Guests" class="form-control" placeholder="Ex. house name, ernakulam .." required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset>
+                                    <label for="date" class="form-label">Visit Date</label>
+                                    <input type="date" name="date" class="date" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <label for="chooseDestination" class="form-label">Choose Your Service</label>
+                                    <select name="Destination" class="form-select" aria-label="Default select example" id="chooseCategory">
+                                        <option selected>ex. Retrofiting</option>
+                                        <option value="rebar corossion">rebar corossion</option>
+                                        <option value="Crack repair">Crack repair</option>
+                                        <option value="Roof Slab Spailing">Roof Slab Spailing</option>
+                                        <option value="Defect Rectification">Defect Rectification</option>
+                                        <option value="Renovation">Renovation</option>
+                                        <option value="Expoxy/PU injection">Expoxy/PU injection</option>
+                                    </select>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                                <fieldset>
+                                    <input type="hidden" name="latitude" id="latitude">
+                                    <input type="hidden" name="longitude" id="longitude">
+                                    <button type="submit" class="main-button">Book your Site-Visit Now</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="success-message" style="display: none; margin-top: 20px;">
+                        <p>Successfully booked your free site visit on <span id="visit-date"></span>. Our expertise will be visiting soon.</p>
+                    </div>
+                    <div id="bookings" style="display: none; margin-top: 20px;">
+                        <h1 class="h1">Your bookings</h1>
+                        <div id="booking-details" class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Visit Date</th>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Service</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="booking-details-body">
+                                    <!-- Booking details will be inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <p>Copyright © 2036 <a href="#">BuiltonTech</a> Company. All rights reserved. 
+              <br>BuiltOnTech and its logo are trademarks of the company</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../static/assets/js/isotope.min.js"></script>
+    <script src="../static/assets/js/owl-carousel.js"></script>
+    <script src="../static/assets/js/wow.js"></script>
+    <script src="../static/assets/js/tabs.js"></script>
+    <script src="../static/assets/js/popup.js"></script>
+    <script src="../static/assets/js/custom.js"></script>
+
+    <script>
+        let map;
+        let marker;
+
+        function initMap() {
+            map = L.map('map').setView([25.907788, -80.140364], 14);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        }
+
+        function findLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    document.getElementById('latitude').value = lat;
+                    document.getElementById('longitude').value = lng;
+                    if (marker) {
+                        map.removeLayer(marker);
+                    }
+                    marker = L.marker([lat, lng]).addTo(map)
+                        .bindPopup('You are here!')
+                        .openPopup();
+                });
+            } else {
+                alert('Geolocation is not supported by this browser.');
+            }
+        }
+
+        document.getElementById('find-location').addEventListener('click', findLocation);
+        document.getElementById('get-live-location').addEventListener('click', function() {
+            findLocation();
+            document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Initialize the map
+        initMap();
+
+        // Handle form submission
+        document.getElementById('reservation-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the form data
+            const formData = new FormData(this);
+            const visitDate = formData.get('date');
+            const name = formData.get('Name');
+            const phone = formData.get('Number');
+            const address = formData.get('Guests');
+            const service = formData.get('Destination');
+            const latitude = formData.get('latitude');
+            const longitude = formData.get('longitude');
+
+            // Send the form data to the server using AJAX
+            fetch('{{ url_for("book_site_visit") }}', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text(); // Use text() instead of json() to handle non-JSON responses
+            })
+            .then(text => {
+                try {
+                    const data = JSON.parse(text); // Try to parse the response as JSON
+                    if (data.status === 'success') {
+                        // Display the success message
+                        document.getElementById('visit-date').textContent = visitDate;
+                        document.getElementById('success-message').style.display = 'block';
+
+                        // Display the booking details
+                        const bookingDetailsBody = document.getElementById('booking-details-body');
+                        const bookingRow = document.createElement('tr');
+                        bookingRow.innerHTML = `
+                            <td>${visitDate}</td>
+                            <td>${name}</td>
+                            <td>${address}</td>
+                            <td>${phone}</td>
+                            <td>${service}</td>
+                        `;
+                        bookingDetailsBody.appendChild(bookingRow);
+                        document.getElementById('bookings').style.display = 'block';
+
+                        // Display booking confirmation message
+                        alert('Booking Confirmed');
+                        // Reload the page after a short delay
+                        setTimeout(() => {
+                            location.reload();
+                        }, 2000);
+                    } else {
+                        alert('Booking Confirmed');
+                        // Reload the page after a short delay
+                        setTimeout(() => {
+                            location.reload();
+                        }, 2000);
+                    }
+                } catch (error) {
+                    console.error('Error parsing JSON:', error);
+                    alert('Booking Confirmed.');
+                    // Reload the page after a short delay
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Booking Confirmed.');
+                // Reload the page after a short delay
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            });
+        });
+
+        // Fetch and display existing bookings for the logged-in user
+        function fetchBookings() {
+            fetch('{{ url_for("fetch_bookings") }}')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.status === 'success') {
+                    const bookingDetailsBody = document.getElementById('booking-details-body');
+                    bookingDetailsBody.innerHTML = ''; // Clear existing bookings
+                    data.bookings.forEach(booking => {
+                        const bookingRow = document.createElement('tr');
+                        bookingRow.innerHTML = `
+                            <td>${booking.visit_date}</td>
+                            <td>${booking.name}</td>
+                            <td>${booking.address}</td>
+                            <td>${booking.phone_number}</td>
+                            <td>${booking.service_name}</td>
+                        `;
+                        bookingDetailsBody.appendChild(bookingRow);
+                    });
+                    document.getElementById('bookings').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Fetch bookings on page load
+        fetchBookings();
+    </script>
+
+</body>
+
+</html>

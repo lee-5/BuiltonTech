@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>BuiltonTech Services</title>
+    <!-- Bootstrap core CSS -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../static/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/assets/css/templatemo-woox-travel.css">
+    <link rel="stylesheet" href="../static/assets/css/owl.css">
+    <link rel="stylesheet" href="../static/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="icon" href="../static/favicon.ico/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="home.html" class="logo">
+                            <img src="../static/assets/images/logo.png" alt="">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="{{ url_for('home') }}" >Home</a></li>
+                            <li><a href="{{ url_for('about') }}">About</a></li>
+                            <li><a href="{{ url_for('deals') }}" class="active">Services</a></li>
+                            <li><a href="{{ url_for('reservation') }}">Book Site-visit</a></li>
+                            <li><a href="{{ url_for('progress') }}">Progress</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <div class="user-info">
+                            <span>carry on, {{ username }}</span>
+                            <button id="logoutButton" onclick="location.href='/logout'">Logout</button>
+                        </div>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h4>Discover Our Various Services</h4>
+                    <h2>All Services Indoor &amp; Outdoor</h2>
+                    <div class="border-button"><a href="about.html">scroll down</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form id="search-form" name="gs" method="post" action="{{ url_for('deals') }}">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h4>Search Services:</h4>
+                            </div>
+                            <div class="col-lg-4">
+                                <fieldset>
+                                    <input type="text" name="search_query" class="form-control" placeholder="Enter service name" required>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-2">
+                                <fieldset>
+                                    <button type="submit" class="border-button">Search</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="amazing-deals">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="section-heading text-center">
+                        <h2>Services that match your search results</h2>
+                        <p></p>
+                    </div>
+                </div>
+                {% for deal in deals %}
+                <div class="col-lg-6 col-sm-6">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="image">
+                                    <img src="{{ url_for('static', filename=deal[5]) }}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                                <div class="content">
+                                    <span class="info">*Book a Site visit</span>
+                                    <h4>{{ deal[0] }}</h4>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <i class="fa fa-clock"></i>
+                                            <span class="list">{{ deal[4] }} Days</span>
+                                        </div>
+                                        <div class="col-6">
+                                            <i class="fas fa-people-carry"></i>
+                                            <span class="list">{{ deal[3] }}</span>
+                                        </div>
+                                    </div>
+                                    <p>{{ deal[1] }}</p>
+                                    <div class="main-button">
+                                        <a href="#" class="know-more-link" data-video-url="{{ url_for('static', filename='assets/images/retrofiting.mp4') }}">know more</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="call-to-action">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h2>Book any services</h2>
+            <h4>Book Free Site-visits By Clicking The Button</h4>
+          </div>
+          <div class="col-lg-4">
+            <div class="border-button">
+              <a href="reservation.html">Book Yours Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright © 2036 <a href="#">BuiltonTech</a> Company. All rights reserved. 
+            <br>BuiltOnTech and its logo are trademarks of the company</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+    <!-- Modal HTML -->
+    <div id="videoModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <video id="modalVideo" width="100%" controls>
+          <source id="videoSource" src="" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="../static/vendor/jquery/jquery.min.js"></script>
+    <script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="../static/assets/js/isotope.min.js"></script>
+    <script src="../static/assets/js/owl-carousel.js"></script>
+    <script src="../static/assets/js/wow.js"></script>
+    <script src="../static/assets/js/tabs.js"></script>
+    <script src="../static/assets/js/popup.js"></script>
+    <script src="../static/assets/js/custom.js"></script>
+
+    <script>
+        $(".option").click(function() {
+            $(".option").removeClass("active");
+            $(this).addClass("active");
+        });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get the modal
+        var modal = document.getElementById("videoModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+          var video = document.getElementById("modalVideo");
+          video.pause();
+          video.currentTime = 0;
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+            var video = document.getElementById("modalVideo");
+            video.pause();
+            video.currentTime = 0;
+          }
+        }
+
+        // Add event listeners to "know more" links
+        var links = document.querySelectorAll(".know-more-link");
+        links.forEach(function(link) {
+          link.addEventListener("click", function(event) {
+            event.preventDefault();
+            var videoUrl = this.getAttribute("data-video-url");
+            var videoSource = document.getElementById("videoSource");
+            videoSource.src = videoUrl;
+            var video = document.getElementById("modalVideo");
+            video.load();
+            modal.style.display = "block";
+            video.play();
+          });
+        });
+      });
+    </script>
+
+</body>
+
+</html>

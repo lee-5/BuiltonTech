@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body { padding: 20px; }
+        .table-container { margin-top: 20px; }
+        td.editable {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Admin Dashboard</h2>
+        <ul class="nav nav-tabs" id="adminTabs">
+            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#users">Users</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#bookings">Bookings</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#portfolio">Portfolio</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#progress">Progress</a></li>
+            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#resources">Resources</a></li>
+        </ul>
+        <div class="tab-content table-container">
+            <div class="tab-pane fade show active" id="users">
+                <h3>Manage Users</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Disabled</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTable"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input type="text" id="newUserId" placeholder="ID"></td>
+                            <td><input type="text" id="newUsername" placeholder="Username"></td>
+                            <td><input type="text" id="newEmail" placeholder="Email"></td>
+                            <td><input type="number" id="newDisabled" placeholder="Disabled (0 or 1)"></td>
+                            <td><button onclick="addNewRow('login', ['id', 'username', 'email', 'disabled'])">Add</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="bookings">
+                <h3>Manage Bookings</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Booking ID</th>
+                            <th>Name</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>Visit Date</th>
+                            <th>Service Name</th>
+                            <th>Service ID</th>
+                            <th>Booking Date</th>
+                            <th>Price</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                            <th>User ID</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingsTable"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input type="text" id="newBookingId" placeholder="Booking ID"></td>
+                            <td><input type="text" id="newName" placeholder="Name"></td>
+                            <td><input type="text" id="newPhoneNumber" placeholder="Phone Number"></td>
+                            <td><input type="text" id="newAddress" placeholder="Address"></td>
+                            <td><input type="text" id="newVisitDate" placeholder="Visit Date"></td>
+                            <td><input type="text" id="newServiceName" placeholder="Service Name"></td>
+                            <td><input type="text" id="newServiceId" placeholder="Service ID"></td>
+                            <td><input type="text" id="newBookingDate" placeholder="Booking Date"></td>
+                            <td><input type="text" id="newPrice" placeholder="Price"></td>
+                            <td><input type="text" id="newLatitude" placeholder="Latitude"></td>
+                            <td><input type="text" id="newLongitude" placeholder="Longitude"></td>
+                            <td><input type="text" id="newUserId" placeholder="User ID"></td>
+                            <td><button onclick="addNewRow('bookings', ['booking_id', 'name', 'phone_number', 'address', 'visit_date', 'service_name', 'service_id', 'booking_date', 'price', 'latitude', 'longitude', 'user_id'])">Add</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="services">
+                <h3>Manage Services</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Service ID</th>
+                            <th>Service Name</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>Duration</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody id="servicesTable"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input type="text" id="newServiceId" placeholder="Service ID"></td>
+                            <td><input type="text" id="newServiceName" placeholder="Service Name"></td>
+                            <td><input type="text" id="newDescription" placeholder="Description"></td>
+                            <td><input type="file" id="newImage"></td>
+                            <td><input type="text" id="newPrice" placeholder="Price"></td>
+                            <td><input type="text" id="newDuration" placeholder="Duration"></td>
+                            <td><input type="text" id="newCreatedAt" placeholder="Created At"></td>
+                            <td><button onclick="addNewRow('services', ['service_id', 'service_name', 'description', 'image', 'price', 'duration', 'created_at'])">Add</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="portfolio">
+                <h3>Manage Portfolio</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>People</th>
+                            <th>Location</th>
+                            <th>Duration</th>
+                            <th>Image Path</th>
+                        </tr>
+                    </thead>
+                    <tbody id="portfolioTable"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input type="text" id="newPortfolioId" placeholder="ID"></td>
+                            <td><input type="text" id="newTitle" placeholder="Title"></td>
+                            <td><input type="text" id="newPrice" placeholder="Price"></td>
+                            <td><input type="text" id="newPeople" placeholder="People"></td>
+                            <td><input type="text" id="newLocation" placeholder="Location"></td>
+                            <td><input type="text" id="newDuration" placeholder="Duration"></td>
+                            <td><input type="file" id="newImagePath"></td>
+                            <td><button onclick="addNewRow('portfolio', ['id', 'title', 'price', 'people', 'location', 'duration', 'image_path'])">Add</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="progress">
+                <h3>Manage Progress</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Progress ID</th>
+                            <th>Booking ID</th>
+                            <th>Progress Image</th>
+                            <th>Description</th>
+                            <th>Estimated Completion Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="progressTable"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input type="text" id="newProgressId" placeholder="Progress ID"></td>
+                            <td><input type="text" id="newBookingId" placeholder="Booking ID"></td>
+                            <td>
+                                <input type="file" id="newProgressImage1" multiple>
+                                <input type="file" id="newProgressImage2" multiple>
+                                <input type="file" id="newProgressImage3" multiple>
+                            </td>
+                            <td><input type="text" id="newDescription" placeholder="Description"></td>
+                            <td><input type="text" id="newEstimatedCompletionDate" placeholder="Estimated Completion Date"></td>
+                            <td><button onclick="addNewRow('progress', ['progress_id', 'booking_id', 'progress_image', 'description', 'estimated_completion_date'])">Add</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="resources">
+                <h3>Manage Resources</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Resource ID</th>
+                            <th>Service ID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>File URL</th>
+                            <th>No of Days</th>
+                            <th>No of People</th>
+                            <th>Price</th>
+                            <th>Uploaded At</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resourcesTable"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td><input type="text" id="newResourceId" placeholder="Resource ID"></td>
+                            <td><input type="text" id="newServiceId" placeholder="Service ID"></td>
+                            <td><input type="text" id="newTitle" placeholder="Title"></td>
+                            <td><input type="text" id="newDescription" placeholder="Description"></td>
+                            <td><input type="file" id="newFileUrl"></td>
+                            <td><input type="text" id="newNoOfDays" placeholder="No of Days"></td>
+                            <td><input type="text" id="newNoOfPeople" placeholder="No of People"></td>
+                            <td><input type="text" id="newPrice" placeholder="Price"></td>
+                            <td><input type="text" id="newUploadedAt" placeholder="Uploaded At"></td>
+                            <td><button onclick="addNewResource()">Add</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchData('login', 'usersTable', ['id', 'username', 'email', 'disabled']);
+            fetchData('bookings', 'bookingsTable', ['booking_id', 'name', 'phone_number', 'address', 'visit_date', 'service_name', 'service_id', 'booking_date', 'price', 'latitude', 'longitude', 'user_id']);
+            fetchData('services', 'servicesTable', ['service_id', 'service_name', 'description', 'image', 'price', 'duration', 'created_at']);
+            fetchData('portfolio', 'portfolioTable', ['id', 'title', 'price', 'people', 'location', 'duration', 'image_path']);
+            fetchData('progress', 'progressTable', ['progress_id', 'booking_id', 'progress_image', 'description', 'estimated_completion_date']);
+            fetchData('resources', 'resourcesTable', ['resource_id', 'service_id', 'title', 'description', 'file_url', 'no_of_days', 'no_of_people', 'price', 'uploaded_at']);
+        });
+
+        function fetchData(table, tableId, columns) {
+            fetch(`/get_data/${table}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    let tableBody = document.getElementById(tableId);
+                    tableBody.innerHTML = '';
+                    data.forEach(row => {
+                        let tr = document.createElement('tr');
+                        columns.forEach(column => {
+                            let td = document.createElement('td');
+                            td.classList.add('editable');
+                            td.setAttribute('data-table', table);
+                            td.setAttribute('data-id', row[getPrimaryKey(table)]);
+                            td.setAttribute('data-column', column);
+                            if (column === 'image' || column === 'image_path' || column === 'progress_image' || column === 'file_url') {
+                                if (column === 'progress_image') {
+                                    let images = row[column].split(',');
+                                    images.forEach((url, index) => {
+                                        let img = document.createElement('img');
+                                        img.src = url;
+                                        img.style.width = '50px';
+                                        img.style.height = '50px';
+                                        img.style.cursor = 'pointer';
+                                        img.onclick = function() {
+                                            let input = document.createElement('input');
+                                            input.type = 'file';
+                                            input.onchange = function() {
+                                                let file = input.files[0];
+                                                let formData = new FormData();
+                                                formData.append('file', file);
+                                                fetch(`/upload_progress_images/${row[getPrimaryKey(table)]}/${index}`, {
+                                                    method: 'POST',
+                                                    body: formData
+                                                }).then(response => response.json())
+                                                  .then(data => {
+                                                      if (data.status === 'success') {
+                                                          img.src = data.file_url;
+                                                      } else {
+                                                          alert('Failed to upload image');
+                                                      }
+                                                  });
+                                            };
+                                            input.click();
+                                        };
+                                        td.appendChild(img);
+                                    });
+                                    // Add button to upload new image
+                                    let addButton = document.createElement('button');
+                                    addButton.textContent = 'Add Image';
+                                    addButton.onclick = function() {
+                                        let input = document.createElement('input');
+                                        input.type = 'file';
+                                        input.onchange = function() {
+                                            let file = input.files[0];
+                                            let formData = new FormData();
+                                            formData.append('file', file);
+                                            fetch(`/upload_progress_images/${row[getPrimaryKey(table)]}/new`, {
+                                                method: 'POST',
+                                                body: formData
+                                            }).then(response => response.json())
+                                              .then(data => {
+                                                  if (data.status === 'success') {
+                                                      let img = document.createElement('img');
+                                                      img.src = data.file_url;
+                                                      img.style.width = '50px';
+                                                      img.style.height = '50px';
+                                                      img.style.cursor = 'pointer';
+                                                      img.onclick = function() {
+                                                          let input = document.createElement('input');
+                                                          input.type = 'file';
+                                                          input.onchange = function() {
+                                                              let file = input.files[0];
+                                                              let formData = new FormData();
+                                                              formData.append('file', file);
+                                                              fetch(`/upload_progress_images/${row[getPrimaryKey(table)]}/new`, {
+                                                                  method: 'POST',
+                                                                  body: formData
+                                                              }).then(response => response.json())
+                                                                .then(data => {
+                                                                    if (data.status === 'success') {
+                                                                        img.src = data.file_url;
+                                                                    } else {
+                                                                        alert('Failed to upload image');
+                                                                    }
+                                                                });
+                                                          };
+                                                          input.click();
+                                                      };
+                                                      td.appendChild(img);
+                                                  } else {
+                                                      alert('Failed to upload image');
+                                                  }
+                                              });
+                                        };
+                                        input.click();
+                                    };
+                                    td.appendChild(addButton);
+                                } else if (column === 'file_url') {
+                                    let img = document.createElement('img');
+                                    img.src = row[column];
+                                    img.style.width = '50px';
+                                    img.style.height = '50px';
+                                    img.style.cursor = 'pointer';
+                                    img.onclick = function() {
+                                        let input = document.createElement('input');
+                                        input.type = 'file';
+                                        input.onchange = function() {
+                                            let file = input.files[0];
+                                            let formData = new FormData();
+                                            formData.append('file', file);
+                                            fetch(`/update_resource_file_url/${row[getPrimaryKey(table)]}`, {
+                                                method: 'POST',
+                                                body: formData
+                                            }).then(response => {
+                                                if (!response.ok) {
+                                                    throw new Error('Network response was not ok');
+                                                }
+                                                return response.json();
+                                            }).then(data => {
+                                                if (data.status === 'success') {
+                                                    img.src = data.file_url;
+                                                } else {
+                                                    alert('Failed to upload file');
+                                                }
+                                            }).catch(error => {
+                                                console.error('There was a problem with the fetch operation:', error);
+                                            });
+                                        };
+                                        input.click();
+                                    };
+                                    td.appendChild(img);
+                                } else {
+                                    let img = document.createElement('img');
+                                    img.src = row[column];
+                                    img.style.width = '50px';
+                                    img.style.height = '50px';
+                                    img.style.cursor = 'pointer';
+                                    img.onclick = function() {
+                                        let input = document.createElement('input');
+                                        input.type = 'file';
+                                        input.onchange = function() {
+                                            let file = input.files[0];
+                                            let formData = new FormData();
+                                            formData.append('file', file);
+                                            fetch(`/update_service_image/${row[getPrimaryKey(table)]}`, {
+                                                method: 'POST',
+                                                body: formData
+                                            }).then(response => {
+                                                if (!response.ok) {
+                                                    throw new Error('Network response was not ok');
+                                                }
+                                                return response.json();
+                                            }).then(data => {
+                                                if (data.status === 'success') {
+                                                    img.src = data.file_url;
+                                                } else {
+                                                    alert('Failed to upload image');
+                                                }
+                                            }).catch(error => {
+                                                console.error('There was a problem with the fetch operation:', error);
+                                            });
+                                        };
+                                        input.click();
+                                    };
+                                    td.appendChild(img);
+                                }
+                            } else {
+                                td.textContent = row[column];
+                                td.ondblclick = editCell;
+                            }
+                            tr.appendChild(td);
+                        });
+                        if (table === 'login') {
+                            let td = document.createElement('td');
+                            let input = document.createElement('input');
+                            input.type = 'number';
+                            input.value = row.disabled ? 1 : 0;
+                            input.onchange = function() {
+                                toggleUser(row.id, input.value);
+                            };
+                            td.appendChild(input);
+                            tr.appendChild(td);
+                        }
+                        tableBody.appendChild(tr);
+                    });
+                }).catch(error => {
+                    console.error('There was a problem with the fetch operation:', error);
+                });
+        }
+
+        function editCell(event) {
+            let td = event.target;
+            let oldValue = td.textContent;
+            let input = document.createElement('input');
+            input.type = 'text';
+            input.value = oldValue;
+            input.onblur = function() {
+                let newValue = input.value;
+                td.textContent = newValue;
+                if (newValue !== oldValue) {
+                    updateCell(td.getAttribute('data-table'), td.getAttribute('data-id'), td.getAttribute('data-column'), newValue);
+                }
+            };
+            td.textContent = '';
+            td.appendChild(input);
+            input.focus();
+        }
+
+        function updateCell(table, id, column, value) {
+            let data = {};
+            data[column] = value;
+            data[getPrimaryKey(table)] = id;
+            fetch(`/update_data/${table}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            }).then(response => response.json())
+              .then(data => { if (data.status !== "success") alert('Failed to update'); });
+        }
+
+        function addNewRow(table, columns) {
+            let newRow = {};
+            columns.forEach(column => {
+                let inputElement = document.getElementById(`new${capitalizeFirstLetter(column)}`);
+                if (inputElement) {
+                    if (inputElement.type === 'file' && column === 'progress_image') {
+                        // Handle file upload separately for progress images
+                    } else if (inputElement.type === 'file') {
+                        let file = inputElement.files[0];
+                        if (file) {
+                            let formData = new FormData();
+                            formData.append('file', file);
+                            fetch(`/upload_image/${table}/new`, {
+                                method: 'POST',
+                                body: formData
+                            }).then(response => response.json())
+                              .then(data => {
+                                  if (data.status === 'success') {
+                                      newRow[column] = data.file_url;
+                                      if (table === 'progress') {
+                                          sendNewRowDataToProgress(newRow);
+                                      } else {
+                                          sendNewRowData(table, newRow);
+                                      }
+                                  } else {
+                                      alert('Failed to upload image');
+                                  }
+                              });
+                        }
+                    } else {
+                        newRow[column] = inputElement.value;
+                    }
+                }
+            });
+            if (table !== 'progress') {
+                sendNewRowData(table, newRow);
+            } else {
+                sendNewRowDataToProgress(newRow);
+            }
+        }
+
+        function sendNewRowData(table, newRow) {
+            fetch(`/add_data/${table}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newRow)
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.status === 'success') {
+                      location.reload();
+                  } else {
+                      alert('Failed to add new row');
+                  }
+              });
+        }
+
+        function sendNewRowDataToProgress(newRow) {
+            fetch(`/add_progress`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newRow)
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.status === 'success') {
+                      let progressId = data.progress_id;
+                      uploadProgressImages(progressId);
+                  } else {
+                      alert('Failed to add new row to progress');
+                  }
+              });
+        }
+
+        function uploadProgressImages(progressId) {
+            let inputElements = [
+                document.getElementById('newProgressImage1'),
+                document.getElementById('newProgressImage2'),
+                document.getElementById('newProgressImage3')
+            ];
+            let formData = new FormData();
+            inputElements.forEach((inputElement, index) => {
+                let files = inputElement.files;
+                for (let i = 0; i < files.length; i++) {
+                    formData.append('files', files[i]);
+                }
+            });
+            fetch(`/upload_progress_images/${progressId}`, {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.status === 'success') {
+                      location.reload();
+                  } else {
+                      alert('Failed to upload progress images');
+                  }
+              });
+        }
+
+        function getPrimaryKey(table) {
+            switch (table) {
+                case 'bookings': return 'booking_id';
+                case 'services': return 'service_id';
+                case 'portfolio': return 'id';
+                case 'progress': return 'progress_id';
+                case 'resources': return 'resource_id';
+                default: return 'id';
+            }
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        function toggleUser(id, disabled) {
+            fetch('/toggle_user', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, disabled })
+            }).then(response => response.json())
+              .then(data => { if (data.status !== "success") alert('Failed to update'); });
+        }
+
+        function addNewResource() {
+            let newRow = {
+                resource_id: document.getElementById('newResourceId').value,
+                service_id: document.getElementById('newServiceId').value,
+                title: document.getElementById('newTitle').value,
+                description: document.getElementById('newDescription').value,
+                file_url: document.getElementById('newFileUrl').value,
+                no_of_days: document.getElementById('newNoOfDays').value,
+                no_of_people: document.getElementById('newNoOfPeople').value,
+                price: document.getElementById('newPrice').value,
+                uploaded_at: document.getElementById('newUploadedAt').value
+            };
+            fetch('/add_resources', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newRow)
+            }).then(response => response.json())
+              .then(data => {
+                  if (data.status === 'success') {
+                      location.reload();
+                  } else {
+                      alert('Failed to add new resource');
+                  }
+              });
+        }
+    </script>
+</body>
+</html>
