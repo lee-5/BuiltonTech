@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Raleway", sans-serif;
+  background-image: url("../images/initial.jpg"); /* Default background */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out, background-position 1s ease-in-out, transform 1s ease-in-out; 
+  transform: scale(1); /* Initial scale */  
+}
+
+body.background-left {
+  background-position: left center; /* Move background to the left */
+  transform: scale(1); /* Shrink the background */
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+.container:hover .top:before,
+.container:hover .top:after,
+.container:hover .bottom:before,
+.container:hover .bottom:after,
+.container:active .top:before,
+.container:active .top:after,
+.container:active .bottom:before,
+.container:active .bottom:after {
+  margin-left: 200px;
+  transform-origin: -200px 50%;
+  transition-delay: 0s;
+}
+
+.container:hover .center,
+.container:active .center {
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.top:before, .top:after, .bottom:before, .bottom:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 200vmax;
+  height: 200vmax;
+  top: 50%;
+  left: 50%;
+  margin-top: -100vmax;
+  transform-origin: 0 50%;
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  z-index: 10;
+  opacity: 0.65;
+  transition-delay: 0.2s;
+}
+
+.top:before {
+  transform: rotate(45deg);
+  background: rgba(0, 0, 0, 0);
+}
+
+.top:after {
+  transform: rotate(135deg);
+  background: #02FF00;
+}
+
+.bottom:before {
+  transform: rotate(-45deg);
+  background: rgba(0, 0, 0, 0);
+}
+
+.bottom:after {
+  transform: rotate(-135deg);
+  background: #20252A;
+}
+
+.center {
+  position: absolute;
+  width: 400px;
+  height: auto;
+  top: 50%;
+  right: 10%; /* Align to the right side */
+  transform: translateY(-50%); /* Center vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  opacity: 0; /* Ensure the element is visible */
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  transition-delay: 0s;
+  color: #333;
+  z-index: 10; /* Ensure the element is on top */
+}
+
+h2 {
+  color: #ffffff; 
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(3, 10, 45, 0.5); 
+  backdrop-filter: blur(1px); 
+  -webkit-backdrop-filter: blur(1px);
+}
+
+#loginButton {
+  background: rgba(3, 8, 45, 0.4);
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  width: 100%;
+  max-width: 400px;
+  margin-top: 20px;
+}
+
+#loginButton:hover {
+  background: rgba(4, 10, 49, 0.7);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+#loginButton:active {
+  background: rgba(5, 10, 49, 0.9);
+  transform: scale(0.95);
+}
+
+#registerButton {
+  background: rgba(3, 8, 45, 0.4);
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+#registerButton:hover {
+  background: rgba(4, 10, 49, 0.7);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+#registerButton:active {
+  background: rgba(5, 10, 49, 0.9);
+  transform: scale(0.95);
+}
+
+.center input {
+  width: 100%;
+  background: rgba(2, 7, 45, 0.5);
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 1px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  color: white;
+}
+
+.center input::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+/* Ensure the quote is above all elements */
+.quote-container {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
+    z-index: 9999;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Styling the quote */
+.quote-text {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    display: inline-block;
+    letter-spacing: 4px; /* Adjust the spacing as needed */
+    font-family: "Avenir Medium", Avenir, sans-serif;
+}
+
+
+
+/* Letter by letter animation */
+.quote-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+/* Apply a faster delay to each letter */
+.quote-text span:nth-child(1) { animation-delay: 0.05s; }
+.quote-text span:nth-child(2) { animation-delay: 0.1s; }
+.quote-text span:nth-child(3) { animation-delay: 0.15s; }
+.quote-text span:nth-child(4) { animation-delay: 0.2s; }
+.quote-text span:nth-child(5) { animation-delay: 0.25s; }
+.quote-text span:nth-child(6) { animation-delay: 0.3s; }
+.quote-text span:nth-child(7) { animation-delay: 0.35s; }
+.quote-text span:nth-child(8) { animation-delay: 0.4s; }
+.quote-text span:nth-child(9) { animation-delay: 0.45s; }
+.quote-text span:nth-child(10) { animation-delay: 0.5s; }
+.quote-text span:nth-child(11) { animation-delay: 0.55s; }
+.quote-text span:nth-child(12) { animation-delay: 0.6s; }
+.quote-text span:nth-child(13) { animation-delay: 0.65s; }
+.quote-text span:nth-child(14) { animation-delay: 0.7s; }
+.quote-text span:nth-child(15) { animation-delay: 0.75s; }
+.quote-text span:nth-child(16) { animation-delay: 0.8s; }
+.quote-text span:nth-child(17) { animation-delay: 0.85s; }
+.quote-text span:nth-child(18) { animation-delay: 0.9s; }
+.quote-text span:nth-child(19) { animation-delay: 0.95s; }
+.quote-text span:nth-child(20) { animation-delay: 1.0s; }
+.quote-text span:nth-child(21) { animation-delay: 1.05s; }
+.quote-text span:nth-child(22) { animation-delay: 1.1s; }
+.quote-text span:nth-child(23) { animation-delay: 1.15s; }
+.quote-text span:nth-child(24) { animation-delay: 1.2s; }
+.quote-text span:nth-child(25) { animation-delay: 1.25s; }
+.quote-text span:nth-child(26) { animation-delay: 1.3s; }
+.quote-text span:nth-child(27) { animation-delay: 1.35s; }
+.quote-text span:nth-child(28) { animation-delay: 1.4s; }
+.quote-text span:nth-child(29) { animation-delay: 1.45s; }
+.quote-text span:nth-child(30) { animation-delay: 1.5s; }
+
+/* Keyframes for fade-in animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ensure the quote disappears on hover */
+.container:hover ~ .quote-container {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
